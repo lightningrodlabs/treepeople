@@ -1,0 +1,28 @@
+---
+manifest_version: "1"
+name: treepeople
+integrity:
+  network_seed: ~
+  properties: ~
+  origin_time: 1692130753691245
+  zomes:
+    - name: profiles_integrity
+      hash: ~
+      bundled: "../../../target/wasm32-unknown-unknown/release/profiles_integrity.wasm"
+      dependencies: ~
+    - name: treepeople_integrity
+      hash: ~
+      bundled: "../../../target/wasm32-unknown-unknown/release/treepeople_integrity.wasm"
+      dependencies: ~
+coordinator:
+  zomes:
+    - name: profiles
+      hash: ~
+      bundled: "../../../target/wasm32-unknown-unknown/release/profiles.wasm"
+      dependencies:
+        - name: profiles_integrity
+    - name: treepeople
+      hash: ~
+      bundled: "../../../target/wasm32-unknown-unknown/release/treepeople.wasm"
+      dependencies:
+        - name: treepeople_integrity

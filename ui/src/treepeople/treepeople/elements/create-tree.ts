@@ -93,7 +93,7 @@ export class CreateTree extends LitElement {
           <sl-input name="planter" .label=${msg("Planter")}  required></sl-input>          </div>
 
           <div style="margin-bottom: 16px;">
-          <sl-input name="date_planted" .label=${msg("Date Planted")} type="datetime-local" @click=${(e: Event) => e.preventDefault()}  required></sl-input>          </div>
+          <sl-input name="date_planted" .label=${msg("Date Planted")} type="date" @click=${(e: Event) => e.preventDefault()}  required></sl-input>          </div>
 
           <div style="margin-bottom: 16px;">
           <sl-input name="species" .label=${msg("Species")}  required></sl-input>          </div>

@@ -1,4 +1,4 @@
-import { LitElement, html } from 'lit';
+import { LitElement, css, html } from 'lit';
 import { state, property, customElement } from 'lit/decorators.js';
 import { EntryHash, Record, ActionHash } from '@holochain/client';
 import { EntryRecord } from '@holochain-open-dev/utils';
@@ -79,29 +79,28 @@ export class TreeDetail extends LitElement {
         </div>
 
         <div style="display: flex; flex-direction: column">
-  
-          <div style="display: flex; flex-direction: column; margin-bottom: 16px">
-	    <span style="margin-bottom: 8px"><strong>${msg("Planter")}</strong></span>
- 	    <span style="white-space: pre-line">${ entryRecord.entry.planter }</span>
+          <div class="item">
+            <span class="label">${msg("Planter")}</span>
+            <span style="white-space: pre-line">${ entryRecord.entry.planter }</span>
+          </div>
+
+          <div class="item">
+	    <span class="label">${msg("Date Planted")}</span>
+ 	    <sl-format-date .date=${new Date(entryRecord.entry.date_planted / 1000) }></sl-format-date>
 	  </div>
 
-          <div style="display: flex; flex-direction: column; margin-bottom: 16px">
-	    <span style="margin-bottom: 8px"><strong>${msg("Date Planted")}</strong></span>
- 	    <span style="white-space: pre-line"><sl-format-date .date=${new Date(entryRecord.entry.date_planted / 1000) }></sl-format-date></span>
-	  </div>
-
-          <div style="display: flex; flex-direction: column; margin-bottom: 16px">
-	    <span style="margin-bottom: 8px"><strong>${msg("Species")}</strong></span>
+          <div class="item">
+	    <span class="label">${msg("Species")}</span>
  	    <span style="white-space: pre-line">${ entryRecord.entry.species }</span>
 	  </div>
 
-          <div style="display: flex; flex-direction: column; margin-bottom: 16px">
-	    <span style="margin-bottom: 8px"><strong>${msg("Variety")}</strong></span>
+          <div class="item">
+	    <span class="label">${msg("Variety")}</span>
  	    <span style="white-space: pre-line">${ entryRecord.entry.variety }</span>
 	  </div>
 
-          <div style="display: flex; flex-direction: column; margin-bottom: 16px">
-	    <span style="margin-bottom: 8px"><strong>${msg("Notes")}</strong></span>
+          <div class="item">
+	    <span class="label">${msg("Notes")}</span>
  	    <span style="white-space: pre-line">${ entryRecord.entry.notes }</span>
 	  </div>
 
@@ -146,5 +145,14 @@ export class TreeDetail extends LitElement {
     }
   }
   
-  static styles = [sharedStyles];
+  static styles = [sharedStyles,
+    css`
+    .item {
+      display: flex; flex-direction: row; margin-bottom: 16px;
+    }
+    .label {
+      margin-right: 8px;
+      font-weight: bold;
+    }
+    `];
 }
